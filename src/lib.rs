@@ -77,6 +77,6 @@ macro_rules! targeted_log {
     // This branch will generate the macros prefixed with "tg" and the
     // specified target `$tgt`.
     ($tgt:expr) => {
-	targeted_log!($tgt, tg);
+	$crate::targeted_log!($tgt, tg);
     }
 }
