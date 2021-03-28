@@ -1,3 +1,5 @@
+pub use paste as _paste;
+
 /// This macro is intended to be used with the log crate. This macro
 /// generates macros that applies some specific target to the common
 /// logging macros (`info!`, `error!`...). The idea behind
@@ -60,7 +62,7 @@ macro_rules! targeted_log {
     // This branch will generate the macros for the given logging functions
     // `$impl` prefixed with `$prefix` and the specified target `$tgt`
     ($tgt:expr, $prefix:ident, [$($impl:ident),*]) => {
-	paste::paste! {
+	$crate::_paste::paste! {
 	    $(
 		$crate::targeted_log!(@internal $tgt, $impl, [<$prefix $impl>], $);
 	    )*
