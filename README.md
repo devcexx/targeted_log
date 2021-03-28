@@ -29,6 +29,28 @@ fn do_some_work() {
 }
 ```
 
+You can also add a format specifier to the target itself, to make it a bit more flexible:
+```edition2018
+use targeted_log::targeted_log;
+///
+targeted_log!("Log {} {}");
+fn do_some_work() {
+    tginfo!(@ 1, 2; "Hey! I'm doing some work");
+    tgwarn!(@ 3, 4; "Warning! This is a warning!");
+}
+```
+
+Is equivalent to doing:
+
+```edition2018
+use log::{info, warn};
+///
+fn do_some_work() {
+    info!(target: &format!("Log {} {}", 1, 2), "Hey! I'm doing some work");
+    warn!(target: &format!("Log {} {}", 3, 4), "Warning! This is a warning!");
+}
+```
+
 Of course, calling this macro more than once per module will cause
 a conflict between names.  For that cases, when we want to use
 multiple logging targets within one module, we can specify the
