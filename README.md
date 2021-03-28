@@ -30,7 +30,7 @@ fn do_some_work() {
 ```
 
 You can also add a format specifier to the target itself, to make it a bit more flexible:
-```edition2018
+```rust
 use targeted_log::targeted_log;
 ///
 targeted_log!("Log {} {}");
@@ -42,7 +42,7 @@ fn do_some_work() {
 
 Is equivalent to doing:
 
-```edition2018
+```rust
 use log::{info, warn};
 ///
 fn do_some_work() {
